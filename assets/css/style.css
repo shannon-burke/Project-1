@@ -1,0 +1,38 @@
+#quiz-questions-div {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.quiz-question {
+
+}
+
+#quiz-buttons-div {
+    text-align: center;
+
+}
+
+.quiz-button {
+margin: 2px;
+}
+
+.navbar-custom {
+    background-color: #6D8B43;
+}
+
+.jumbotron {
+    color: whitesmoke;
+    margin-bottom: 0px;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/182/973/large_2x/poison-ivy-outline-seamless-pattern-vector.jpg");
+    background-repeat: repeat-x;
+}
+
+.display-4 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 70px;
+}
+
+#jumbotron-subtext {
+    font-family: 'Francois One', sans-serif;
+}
