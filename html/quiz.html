@@ -13,10 +13,15 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Francois+One&display=swap" rel="stylesheet">
-
+    <!--animate on scroll-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <!--jumbotron banner-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -123,6 +128,9 @@
                     <hr>
                     <hr>
                     <hr>
+                    <div data-aos="fade-right">
+                        <h1>This is a test</h1>
+                    </div>
                     <hr>
                     <hr>
                     <hr>
@@ -149,6 +157,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script src="../assets/javascript/quiz.js"></script>
 </body>
 
 </html>
