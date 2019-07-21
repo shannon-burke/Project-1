@@ -16,5 +16,5 @@ $.ajax({
     snippet.text(response[2]);
     wikilink.attr("href", response[3])
 });
-
-
+// delete later, this is a note for myself - Dan
+//https://stackoverflow.com/questions/7185288/how-to-get-wikipedia-content-using-wikipedias-api
