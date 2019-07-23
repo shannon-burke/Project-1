@@ -10,11 +10,13 @@
 
 #quiz-buttons-div {
     text-align: center;
+    color: #343434;
 
 }
 
 .quiz-button {
 margin: 2px;
+background-color: #6D8B43;
 }
 
 .navbar-custom {
