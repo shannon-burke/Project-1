@@ -6,7 +6,7 @@ var care = $("#caretips");
 var wikilink = $("#wikilink");
 var searchterm;
 //query URL will need to be adjusted later once quiz function is up and running
-var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search='Saintpaulia'&limit=1&format=json";
+var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=" + searchterm + "&limit=1&format=json";
 $.ajax({
     url: queryURL,
     method: "GET"
