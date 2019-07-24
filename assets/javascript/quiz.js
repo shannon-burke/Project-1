@@ -3,8 +3,10 @@ var quiz = $("#quiz-buttons-div")
 
 var questions = [{
     question: "How much do you plan on taking care of the plant?",
+
     answers: ["everyday", "once to a few times a week", "hardly ever"],
     values: ["water-high", "water-mid", "water-low"]
+
 
 }, {
     question: "Do you want something out of the plant?",
@@ -223,3 +225,26 @@ $("#submit").on("click", function () {
     }
     console.log(userPlants);
 });
+
+}
+
+}]
+function createAnswerButtons() {
+    for (var i = 0; i < questions[questionsAnswered].choices.length; i++) {
+        var answerButton = $("<button>");
+        answerButton.text(questions[questionsAnswered].choices[i]);
+        answerButton.addClass("btn btn-secondary quiz-button");
+        answerButton.attr("value", questions[questionsAnswered].values[i]);
+        answerButton.attr("answerName", questions[questionsAnswered].choices[i]);
+        $("#quiz-buttons-div").append(answerButton);
+    }
+};
+function quizLogic(){
+    $("quiz-questions-div").append(questions[questionsAnswered].question);
+    createAnswerButtons();
+
+    $(.quiz-button).on("click", function(){
+        questionsAnswered++;
+    })
+}
+
