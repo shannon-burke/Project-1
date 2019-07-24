@@ -53,7 +53,15 @@
         </div>
     </nav>
 
+
     <script src="../assets/javascript/wiki.js"></script>
+    <sript queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Craig%20Noone&format=json";
+        $.ajax({
+           url: queryURL,
+           method: "GET"
+        }).then(function (response) {
+           console.log(response);
+        });></sript>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
