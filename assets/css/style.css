@@ -1,26 +1,3 @@
-#quiz-questions-div {
-    text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.quiz-question {
-
-}
-
-#quiz-buttons-div {
-    text-align: center;
-
-}
-
-.quiz-button {
-margin: 2px;
-}
-
-.navbar-custom {
-    background-color: #6D8B43;
-}
-
 .jumbotron {
     color: whitesmoke;
     margin-bottom: 0px;
@@ -35,4 +12,57 @@ margin: 2px;
 
 #jumbotron-subtext {
     font-family: 'Francois One', sans-serif;
+}
+
+.navbar {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #6e8c03;
+    color: whitesmoke;
+}
+
+#stemm-nav-link {
+    font-size: 30px;
+}
+
+.quiz-questions-div {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    font-family: 'Francois One', sans-serif;
+}
+
+#quiz-buttons-div {
+    text-align: center;
+}
+
+.quiz-button {
+    margin: 2px;
+    background-color: #465902;
+    color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.quiz-button:hover {
+    background-color: #303508;
+}
+
+#submit {
+    
+    background-color: #2a0f16;
+    color: whitesmoke;
+}
+
+#submit:hover {
+    background-color: #7f5873;
+}
+
+#map {
+    height: 400px;
+    width: 80%;
+    border: 10px;
+    margin: 80px;
+}
+
+.navbar-brand {
+    font-family: 'Bungee Shade', cursive;
 }
