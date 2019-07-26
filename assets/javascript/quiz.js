@@ -1,18 +1,17 @@
 var resultsDiv = $("<div>");
 resultsDiv.attr("id", "results");
 var plantname = $("<h1>");
-plantname.attr("id", "plantname")
+//plantname.attr("id", "plantname")
 var snippet = $("#snippet");
-snippet.attr("id", "snippet")
+//snippet.attr("id", "snippet")
 var pic = $("#plantpic");
-pic.attr("id", "pic")
+//pic.attr("id", "pic")
 var care = $("#caretips");
-care.attr("id", "care")
+//care.attr("id", "care")
 var wikilink = $("#wikilink");
-wikilink.attr("id", "wikilink")
-var searchterm = 'Saintpaulia';
-var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=" + searchterm + "&limit=1&format=json";
-var quiz = $("#quiz-buttons-div")
+//wikilink.attr("id", "wikilink")
+
+var quiz = $("#quiz-buttons-div");
 
 var questions = [{
     question: "How much do you plan on taking care of the plant?",
@@ -223,10 +222,16 @@ $("#submit").on("click", function () {
             userPlants.push(plants[i]);
 
     }
-    $(".container").append(resultsDiv).append(plantname).append(snippet).append(wikilink).append(pic).append(care);
+
     $("#quiz").hide();
+
+
+    $(".container").append(resultsDiv).append(plantname).append(snippet).append(wikilink).append(pic).append(care);
     for (var i = 0; i < userPlants.length; i++) {
         searchterm = userPlants[i].name;
+        var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=" + searchterm + "&limit=1&format=json";
+
+
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -237,6 +242,7 @@ $("#submit").on("click", function () {
             wikilink.attr("href", response[3])
         });
         console.log(userPlants);
+
     }
 
 });
