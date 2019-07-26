@@ -16,8 +16,10 @@ var quiz = $("#quiz-buttons-div")
 
 var questions = [{
     question: "How much do you plan on taking care of the plant?",
+
     answers: ["everyday", "once to a few times a week", "hardly ever"],
     values: ["water-high", "water-mid", "water-low"]
+
 
 }, {
     question: "Do you want something out of the plant?",
@@ -238,5 +240,7 @@ $("#submit").on("click", function () {
 
 
 
+
 // delete later, this is a note for myself - Dan
 //https://stackoverflow.com/questions/7185288/how-to-get-wikipedia-content-using-wikipedias-api
+

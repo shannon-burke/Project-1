@@ -36,3 +36,10 @@ margin: 2px;
 #jumbotron-subtext {
     font-family: 'Francois One', sans-serif;
 }
+
+#map {
+    height: 400px;
+    width: 80%;
+    border: 10px;
+    margin: 80px;
+}
