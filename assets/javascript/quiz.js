@@ -1,4 +1,17 @@
-var questionsAnswered = 0
+var resultsDiv = $("<div>");
+resultsDiv.attr("id", "results");
+var plantname = $("<h1>");
+plantname.attr("id", "plantname")
+var snippet = $("#snippet");
+snippet.attr("id", "snippet")
+var pic = $("#plantpic");
+pic.attr("id", "pic")
+var care = $("#caretips");
+care.attr("id", "care")
+var wikilink = $("#wikilink");
+wikilink.attr("id", "wikilink")
+var searchterm = 'Saintpaulia';
+var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=" + searchterm + "&limit=1&format=json";
 var quiz = $("#quiz-buttons-div")
 
 var questions = [{
@@ -180,20 +193,7 @@ var plants = [{
 ]
 
 
-//function createAnswerButtons() {
-//    for (var i = 0; i < questions[questionsAnswered].choices.length; i++) {
-//        var answerButton = $("<button>");
-//        answerButton.text(questions[questionsAnswered].choices[i]);
-//        answerButton.addClass("btn btn-secondary quiz-button");
-//        answerButton.attr("value", questions[questionsAnswered].values[i]);
-//        answerButton.attr("answerName", questions[questionsAnswered].choices[i]);
-//        $("#quiz-buttons-div").append(answerButton);
-//    }
-//};
 function quizLogic() {
-    //$("#quiz-questions-div").append(questions[questionsAnswered].question);
-    //createAnswerButtons();
-
 
 };
 $(".q1").on("click", function () {
@@ -219,32 +219,28 @@ $(".q4").on("click", function () {
 
 $("#submit").on("click", function () {
     for (var i = 0; i < plants.length; i++) {
-        if ((o => o[i].size === size) && (o => o[i].sunlight === sunlight) && (o => o[i].utility === utility) && (o => o[i].waterConsumption === waterConsumption))
-            userPlants.push(plants);
-        //Currently unable to filter out items in array of objects that do not apply - will need to continue working on this function
+        if ((plants[i].size == size) && (plants[i].sunlight == sunlight) && (plants[i].utility == utility) && (plants[i].waterConsumption == waterConsumption))
+            userPlants.push(plants[i]);
+
     }
+    $(".container").append(resultsDiv).append(plantname).append(snippet).append(wikilink).append(pic).append(care);
+    $("#quiz").hide();
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        plantname.text(response[1]);
+        snippet.text(response[2]);
+        wikilink.attr("href", response[3])
+    });
     console.log(userPlants);
 });
 
-}
 
-}]
-function createAnswerButtons() {
-    for (var i = 0; i < questions[questionsAnswered].choices.length; i++) {
-        var answerButton = $("<button>");
-        answerButton.text(questions[questionsAnswered].choices[i]);
-        answerButton.addClass("btn btn-secondary quiz-button");
-        answerButton.attr("value", questions[questionsAnswered].values[i]);
-        answerButton.attr("answerName", questions[questionsAnswered].choices[i]);
-        $("#quiz-buttons-div").append(answerButton);
-    }
-};
-function quizLogic(){
-    $("quiz-questions-div").append(questions[questionsAnswered].question);
-    createAnswerButtons();
 
-    $(.quiz-button).on("click", function(){
-        questionsAnswered++;
-    })
-}
+
+// delete later, this is a note for myself - Dan
+//https://stackoverflow.com/questions/7185288/how-to-get-wikipedia-content-using-wikipedias-api
 
