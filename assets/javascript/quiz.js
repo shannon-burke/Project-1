@@ -225,17 +225,20 @@ $("#submit").on("click", function () {
     }
     $(".container").append(resultsDiv).append(plantname).append(snippet).append(wikilink).append(pic).append(care);
     $("#quiz").hide();
+    for (var i = 0; i < userPlants.length; i++) {
+        searchterm = userPlants[i].name;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+            plantname.text(response[1]);
+            snippet.text(response[2]);
+            wikilink.attr("href", response[3])
+        });
+        console.log(userPlants);
+    }
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-        plantname.text(response[1]);
-        snippet.text(response[2]);
-        wikilink.attr("href", response[3])
-    });
-    console.log(userPlants);
 });
 
 
