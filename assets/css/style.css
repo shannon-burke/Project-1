@@ -58,6 +58,7 @@
     
     background-color: #2a0f16;
     color: whitesmoke;
+    text-align: center;
 }
 
 #submit:hover {
@@ -99,10 +100,6 @@ body {
     text-align: center;
 }
 
-/*.container {
-    text-align: center;
-}*/
-
 #landing-image {
     width: 100%;
 }
@@ -115,6 +112,10 @@ body {
 
 #landing-message-div, #about-title-div {
     text-align: center;
+}
+
+#landing-message-div {
+    margin-top: 50px;
 }
 
 #about-title-div {
