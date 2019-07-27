@@ -12,6 +12,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!--Bootstrap stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -70,7 +72,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <div class="row team-gallery-row">
+                <div class="row team-gallery-row" data-aos="flip-down">
                     <div class="col-md-6">
                         <img class="team-photo" src="assets/images/team-photos/shannon.jpg">
                         <h2 class="team-name">Shannon Burke</h2>
@@ -81,10 +83,10 @@
                         <img class="team-photo" src="assets/images/team-photos/sam.jpg">
                         <h2 class="team-name">Sam Tricamo</h2>
                         <p class="team-title">API, Research, Javascript</p>
-                        <p class="team-bio">KC's Creative Coder.</p>
+                        <p class="team-bio">Plays board games sometimes, likes to talk about them.</p>
                     </div>
                 </div>
-                <div class="row team-gallery-row">
+                <div class="row team-gallery-row" data-aos="flip-down">
                     <div class="col-md-6">
                         <img class="team-photo" src="assets/images/team-photos/dan.jpg">
                         <h2 class="team-name">Dan Smith</h2>
@@ -118,6 +120,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
