@@ -268,7 +268,7 @@ $("#submit").on("click", function () {
             recomendations.push(response);
             console.log(recomendations);
             for (var j = 0; j < recomendations.length; j++) {
-                resultsDiv.append($(".col-md-2")).append(plantname).append(pic).append(plantInfo).append(wikilink);
+                resultsDiv.append(plantname).append(pic).append(plantInfo).append(wikilink);
                 plantname.text(response[1]);
                 plantInfo.text(response[2]);
                 wikilink.attr("href", response[3]);
