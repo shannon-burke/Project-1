@@ -1,9 +1,10 @@
 var resultsDiv = $("#results");
-var plantname = $("<div>").attr("id", "plant-name");
-var pic = $("<img>").attr("id", "plant-image");
-var plantInfo = $("<div>").attr("id", "plant-info");
-var wikilink = $("<div>").attr("id", "plant-link");
-var resultSRC;
+var plantname = $("<div>").attr("class", "plant-name");
+var pic = $("<img>").attr("class", "plant-image");
+var plantInfo = $("<div>").attr("class", "plant-info");
+var wikilink = $("<a>").attr("class", "plant-link");
+var resultSRC = [];
+var recomendations = [];
 //variables for wikipedia API
 
 
@@ -85,7 +86,7 @@ var plants = [{
     photo: "assets/images/plant-photos/dwarf-lemon.jpg"
 },
 {
-    name: "Fake Plant",
+    name: "Artificial Plant",
     waterConsumption: 1,
     utility: 1,
     size: 1,
@@ -248,7 +249,7 @@ $("#submit").on("click", function () {
     for (var i = 0; i < plants.length; i++) {
         if ((plants[i].size == size) && (plants[i].sunlight == sunlight) && (plants[i].utility == utility) && (plants[i].waterConsumption == waterConsumption)) {
             userPlants.push(plants[i]);
-            resultsDiv.append($(".col-md-2")).append(plantname).append(pic).append(plantInfo).append(wikilink);
+
         }
     }
 
@@ -258,37 +259,25 @@ $("#submit").on("click", function () {
         var searchterm = userPlants[i].name;
         var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=" + searchterm + "&limit=1&format=json";
 
-        resultSRC = userPlants[i].photo;
+        resultSRC.push(userPlants[i].photo);
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
             console.log(response);
+            recomendations.push(response);
+            console.log(recomendations);
+            for (var j = 0; j < recomendations.length; j++) {
+                resultsDiv.append($(".col-md-2")).append(plantname).append(pic).append(plantInfo).append(wikilink);
+                plantname.text(response[1]);
+                plantInfo.text(response[2]);
+                wikilink.attr("href", response[3]);
+                wikilink.text(response[3]);
+                pic.attr("src", resultSRC[j]);
+            }
 
-            plantname.text(response[1]);
-            plantInfo.text(response[2]);
-            wikilink.attr("href", response[3]);
-            wikilink.text(response[3]);
-            pic.attr("src", resultSRC);
         });
-        console.log(userPlants);
+
     }
 
 });
-//<div id="results" class="row">
-//            <div class="col-md-2"></div>
-//            <div class="col-md-8">
-//                <div id="plant-name"></div>
-//                <div id="plant-image"></div>
-//                <div id="plant-info"></div>
-//                <div id="plant-link"></div>
-//            </div>
-//            <div class="col-md-2"></div>
-//        </div>
-
-//var resultsDiv = $("#results");
-//var plantname = $("<div>").attr("id", "plant-name");
-//var pic = $("<img>").attr("id", "plant-image");
-//var plantInfo = $("<div>").attr("id", "plant-info");
-//var wikilink = $("<div>").attr("id", "plant-link");
-
