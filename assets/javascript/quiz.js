@@ -1,18 +1,11 @@
-var resultsDiv = $("<div>");
-resultsDiv.attr("id", "results");
-var plantname = $("<h1>");
-plantname.attr("id", "plantname")
-var snippet = $("#snippet");
-snippet.attr("id", "snippet")
-var pic = $("#plantpic");
-pic.attr("id", "pic")
-var care = $("#caretips");
-care.attr("id", "care")
-var wikilink = $("#wikilink");
-wikilink.attr("id", "wikilink")
-var searchterm = 'Saintpaulia';
-var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=" + searchterm + "&limit=1&format=json";
-var quiz = $("#quiz-buttons-div")
+var resultsDiv = $("#results");
+var plantname = $("<div>").attr("id", "plant-name");
+var pic = $("<img>").attr("id", "plant-image");
+var plantInfo = $("<div>").attr("id", "plant-info");
+var wikilink = $("<div>").attr("id", "plant-link");
+var resultSRC;
+//variables for wikipedia API
+
 
 var questions = [{
     question: "How much do you plan on taking care of the plant?",
@@ -48,147 +41,176 @@ var plants = [{
     waterConsumption: 3,
     utility: 2,
     size: 1,
-    sunlight: 1
+    sunlight: 1,
+    photo: "assets/images/plant-photos/african-violet.jpg"
 },
 {
     name: "Aloe",
     waterConsumption: 1,
     utility: 3,
     size: 2,
-    sunlight: 2
-},
-{
-    name: "Bamboo",
-    waterConsumption: 1,
-    utility: 1,
-    size: 1,
-    sunlight: 1
-},
-{
-    name: "Bonsai",
-    waterConsumption: 3,
-    utility: 1,
-    size: 1,
-    sunlight: 3
-},
-{
-    name: "Fig Tree",
-    waterConsumption: 2,
-    utility: 1,
-    size: 3,
-    sunlight: 3
-},
-{
-    name: "Herb Plant",
-    waterConsumption: 3,
-    utility: 3,
-    size: 1,
-    sunlight: 3
-},
-{
-    name: "Money Tree",
-    waterConsumption: 1,
-    utility: 1,
-    size: 2,
-    sunlight: 3
-},
-{
-    name: "Orchid",
-    waterConsumption: 2,
-    utility: 2,
-    size: 2,
-    sunlight: 1
-},
-{
-    name: "Palm Tree",
-    waterConsumption: 2,
-    utility: 1,
-    size: 3,
-    sunlight: 1
-},
-{
-    name: "Peace Lily",
-    waterConsumption: 3,
-    utility: 2,
-    size: 2,
-    sunlight: 1
-},
-{
-    name: "Philodendron",
-    waterConsumption: 2,
-    utility: 1,
-    size: 2,
-    sunlight: 2
-},
-{
-    name: "Pothos",
-    waterConsumption: 2,
-    utility: 1,
-    size: 2,
-    sunlight: 3
-},
-{
-    name: "Rubber Tree",
-    waterConsumption: 2,
-    utility: 1,
-    size: 3,
-    sunlight: 2
-},
-{
-    name: "Snake Plant",
-    waterConsumption: 1,
-    utility: 1,
-    size: 2,
-    sunlight: 1
-},
-{
-    name: "Succulent",
-    waterConsumption: 1,
-    utility: 2,
-    size: 1,
-    sunlight: 2
-},
-{
-    name: "Schefflera",
-    waterConsumption: 2,
-    utility: 1,
-    size: 2,
-    sunlight: 2
+    sunlight: 2,
+    photo: "assets/images/plant-photos/aloe-vera.jpg"
 },
 {
     name: "Avacado Tree",
     waterConsumption: 2,
     utility: 3,
     size: 2,
-    sunlight: 3
+    sunlight: 3,
+    photo: "assets/images/plant-photos/avocado-tree.jpg"
 },
 {
-    name: "Lavender",
+    name: "Bamboo",
     waterConsumption: 1,
-    utility: 2,
+    utility: 1,
     size: 1,
-    sunlight: 3
+    sunlight: 1,
+    photo: "assets/images/plant-photos/bamboo.jpg"
 },
 {
-    name: "Ficus",
+    name: "Bonsai",
+    waterConsumption: 3,
+    utility: 1,
+    size: 1,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/bonsai.jpg"
+},
+{
+    name: "Dwarf lemon",
     waterConsumption: 2,
-    utility: 2,
+    utility: 1,
     size: 3,
-    sunlight: 3
-},
-{
-    name: "Lettuce",
-    waterConsumption: 2,
-    utility: 3,
-    size: 1,
-    sunlight: 3
+    sunlight: 3,
+    photo: "assets/images/plant-photos/dwarf-lemon.jpg"
 },
 {
     name: "Fake Plant",
     waterConsumption: 1,
     utility: 1,
     size: 1,
-    sunlight: 1
+    sunlight: 1,
+    photo: "assets/images/plant-photos/fake-plant.jpg"
+},
+{
+    name: "Ficus",
+    waterConsumption: 2,
+    utility: 2,
+    size: 3,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/ficus-benjamina.webp"
+},
+{
+    name: "Fiddle leaf fig",
+    waterConsumption: 2,
+    utility: 1,
+    size: 3,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/fiddle-leaf-fig.webp"
+},
+{
+    name: "Herbs",
+    waterConsumption: 3,
+    utility: 3,
+    size: 1,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/herbs.jpg"
+},
+{
+    name: "Lavender",
+    waterConsumption: 1,
+    utility: 2,
+    size: 1,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/lavender.jpg"
+},
+{
+    name: "Lettuce",
+    waterConsumption: 2,
+    utility: 3,
+    size: 1,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/lettuce.jpg"
+},
+{
+    name: "Money Tree",
+    waterConsumption: 1,
+    utility: 1,
+    size: 2,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/money-tree.jpg"
+},
+{
+    name: "Orchid",
+    waterConsumption: 2,
+    utility: 2,
+    size: 2,
+    sunlight: 1,
+    photo: "assets/images/plant-photos/orchid.jpg"
+},
+{
+    name: "Palm Tree",
+    waterConsumption: 2,
+    utility: 1,
+    size: 3,
+    sunlight: 1,
+    photo: "assets/images/plant-photos/palm-tree.webp"
+},
+{
+    name: "Peace Lily",
+    waterConsumption: 3,
+    utility: 2,
+    size: 2,
+    sunlight: 1,
+    photo: "assets/images/plant-photos/peace-lily.webp"
+},
+{
+    name: "Pothos",
+    waterConsumption: 2,
+    utility: 1,
+    size: 2,
+    sunlight: 3,
+    photo: "assets/images/plant-photos/pothos.jpg"
+},
+{
+    name: "Rubber Tree",
+    waterConsumption: 2,
+    utility: 1,
+    size: 3,
+    sunlight: 2,
+    photo: "assets/images/plant-photos/rubber-tree.jpg"
+},
+{
+    name: "Schefflera",
+    waterConsumption: 2,
+    utility: 1,
+    size: 2,
+    sunlight: 2,
+    photo: "assets/images/plant-photos/schefflera.jpg"
+},
+{
+    name: "Snake Plant",
+    waterConsumption: 1,
+    utility: 1,
+    size: 2,
+    sunlight: 1,
+    photo: "assets/images/plant-photos/snake-plant.jpg"
+},
+{
+    name: "Philodendron",
+    waterConsumption: 2,
+    utility: 1,
+    size: 2,
+    sunlight: 2,
+    photo: "assets/images/plant-photos/split-leaf-philodendron.webp"
+},
+{
+    name: "Succulent",
+    waterConsumption: 1,
+    utility: 2,
+    size: 1,
+    sunlight: 2,
+    photo: "assets/images/plant-photos/succulent.jpg"
 },
 ]
 
@@ -219,31 +241,49 @@ $(".q4").on("click", function () {
 
 $("#submit").on("click", function () {
     for (var i = 0; i < plants.length; i++) {
-        if ((plants[i].size == size) && (plants[i].sunlight == sunlight) && (plants[i].utility == utility) && (plants[i].waterConsumption == waterConsumption))
+        if ((plants[i].size == size) && (plants[i].sunlight == sunlight) && (plants[i].utility == utility) && (plants[i].waterConsumption == waterConsumption)) {
             userPlants.push(plants[i]);
-
+            resultsDiv.append($(".col-md-2")).append(plantname).append(pic).append(plantInfo).append(wikilink);
+        }
     }
-    $(".container").append(resultsDiv).append(plantname).append(snippet).append(wikilink).append(pic).append(care);
+
+    // old method $(".container").append(resultsDiv).append(plantname).append(snippet).append(wikilink).append(pic).append(care);
     $("#quiz").hide();
     for (var i = 0; i < userPlants.length; i++) {
-        searchterm = userPlants[i].name;
+        var searchterm = userPlants[i].name;
+        var queryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=" + searchterm + "&limit=1&format=json";
+
+        resultSRC = userPlants[i].photo;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
             console.log(response);
+
             plantname.text(response[1]);
-            snippet.text(response[2]);
-            wikilink.attr("href", response[3])
+            plantInfo.text(response[2]);
+            wikilink.attr("href", response[3]);
+            wikilink.text(response[3]);
+            pic.attr("src", resultSRC);
         });
         console.log(userPlants);
     }
 
 });
+//<div id="results" class="row">
+//            <div class="col-md-2"></div>
+//            <div class="col-md-8">
+//                <div id="plant-name"></div>
+//                <div id="plant-image"></div>
+//                <div id="plant-info"></div>
+//                <div id="plant-link"></div>
+//            </div>
+//            <div class="col-md-2"></div>
+//        </div>
 
-
-
-
-// delete later, this is a note for myself - Dan
-//https://stackoverflow.com/questions/7185288/how-to-get-wikipedia-content-using-wikipedias-api
+//var resultsDiv = $("#results");
+//var plantname = $("<div>").attr("id", "plant-name");
+//var pic = $("<img>").attr("id", "plant-image");
+//var plantInfo = $("<div>").attr("id", "plant-info");
+//var wikilink = $("<div>").attr("id", "plant-link");
 
