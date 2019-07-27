@@ -251,6 +251,9 @@ $("#submit").on("click", function () {
             userPlants.push(plants[i]);
 
         }
+        else {
+            userPlants.push(plants[6])
+        }
     }
 
     // old method $(".container").append(resultsDiv).append(plantname).append(snippet).append(wikilink).append(pic).append(care);
