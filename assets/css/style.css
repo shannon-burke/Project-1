@@ -8,16 +8,19 @@
 .display-4 {
     font-family: 'Bungee Shade', cursive;
     font-size: 70px;
+    color: whitesmoke;
 }
 
 #jumbotron-subtext {
     font-family: 'Francois One', sans-serif;
+    color: whitesmoke;
 }
 
 .navbar {
     font-family: 'Open Sans', sans-serif;
     background-color: #6e8c03;
     color: whitesmoke;
+    padding: 5px;
 }
 
 #stemm-nav-link {
@@ -29,6 +32,7 @@
     padding-top: 100px;
     padding-bottom: 30px;
     font-family: 'Francois One', sans-serif;
+    color: #2a0f16;
 }
 
 #quiz-buttons-div {
@@ -64,5 +68,74 @@
 }
 
 .navbar-brand {
-    font-family: 'Bungee Shade', cursive;
+    font-family: 'Bungee Shade', Impact, sans-serif;
+}
+
+body { 
+    background-color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+#map {
+    margin-top: 20px;
+}
+
+#map-title {
+    font-family: 'Bungee Shade', Impact, sans-serif;
+    color: #2a0f16;
+}
+
+#map-title-div {
+    text-align: center;
+}
+
+/*.container {
+    text-align: center;
+}*/
+
+#landing-image {
+    width: 100%;
+}
+
+#landing-message, #about-title {
+    font-family: 'Bungee Shade', Impact, sans-serif;
+    color: #2a0f16;
+    font-size: 80px;
+}
+
+#landing-message-div, #about-title-div {
+    text-align: center;
+}
+
+#about-title-div {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.team-photo {
+    width: 90%;
+}
+.team-gallery-row {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.team-name {
+    font-family: 'Francois One', sans-serif;
+    color: #2a0f16;
+    font-size: 40px;
+}
+
+.team-title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    color: #303508;
+    font-size: 18px;
+}
+
+.team-bio {
+    font-family: 'Open Sans', sans-serif;
+    color: #465902;
+    font-size: 15px;
 }
