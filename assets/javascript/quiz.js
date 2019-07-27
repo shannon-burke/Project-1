@@ -222,21 +222,26 @@ $(".q1").on("click", function () {
     waterConsumption = this.getAttribute("data");
     console.log(waterConsumption);
     $(".q1").hide();
+    $("#question-1-div").hide();
 });
 $(".q2").on("click", function () {
     utility = this.getAttribute("data");
     console.log(utility);
     $(".q2").hide();
+    $("#question-2-div").hide();
 });
 $(".q3").on("click", function () {
     size = this.getAttribute("data");
     console.log(size);
     $(".q3").hide();
+    $("#question-3-div").hide();
 });
 $(".q4").on("click", function () {
     sunlight = this.getAttribute("data");
     console.log(sunlight);
     $(".q4").hide();
+    $("#question-4-div").hide();
+
 });
 
 $("#submit").on("click", function () {
